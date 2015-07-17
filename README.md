@@ -1,4 +1,4 @@
-# MERFN bootstrap
+# MERFN-Bootstrap
 
 ## Development
 1. run `npm i`
@@ -19,4 +19,4 @@ This will start an auto-watch instance of the karma runner.
 To update the app version
 
 1. From the root, run `./bin/version "<next version id">`
-2. This means that `./bin/version "1.0.1"` would bump the version up to 1.0.1. This then committed and ready to push.# MERFN-Bootstrap
+2. This means that `./bin/version "1.0.1"` would bump the version up to 1.0.1. This then committed and ready to push.

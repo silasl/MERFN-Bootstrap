@@ -15,7 +15,7 @@ describe('Application Store', function () {
         it('should create the specified store', function () {
             expect(ApplicationStore.Store).toEqual(storeObject);
         });
-        
+
         it('should emit the specified change event', function () {
             expect(ApplicationStore.emit).toHaveBeenCalledWith('event');
         });
