@@ -1,0 +1,29 @@
+{
+  "name": "merfn-bootstrap",
+  "main": "index.js",
+  "version": "1.0.0",
+  "authors": [
+    "Silas Landricombe <si@siland.co.uk>"
+  ],
+  "description": "Mongo, Express, React, Flux, Node bootstrap distribution",
+  "moduleType": [
+    "es6",
+    "globals",
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "react": "~0.13.3",
+    "react-router": "~0.13.3",
+    "react-spinner": "~0.2.2",
+    "react-bootstrap": "~0.23.6"
+  }
+}

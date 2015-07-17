@@ -1,0 +1,13 @@
+extend ../layout
+
+block content
+    #container
+
+    script.
+        document.addEventListener('DOMContentLoaded', function() {
+            app.render(
+                    'container',
+                    'http://localhost:3000/sampleConfig.json'
+                    //,'/path/name/' // Root path (opt)
+            );
+        }, false);
