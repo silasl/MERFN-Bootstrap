@@ -6,7 +6,7 @@ var fs = require('fs'),
 
 function rename_release(v) {
     return function (d, f) {
-        var dest = path.join(d, f.replace(/(\.min)?\.js$/, '-' + v + '$1.js').replace('MERFNApp-', ''));
+        var dest = path.join(d, f.replace(/(\.min)?\.js$/, '-' + v + '$1.js').replace('CBRESearch-', ''));
         return dest;
     };
 }
@@ -82,7 +82,7 @@ module.exports = function (grunt) {
             dist: {
                 files: {
                     'public/css/whitelabel.css': 'src/public/less/whitelabel/main.less',
-                    'public/css/blank-theme.css': 'src/public/less/themes/blank-theme/main.less'
+                    'public/css/cbre-commercial.css': 'src/public/less/themes/blank-theme/main.less'
                 }
             }
         },
@@ -132,7 +132,7 @@ module.exports = function (grunt) {
           js: {
             options: {
               beautify: false,
-              ASCIIOnly: true
+              ASCIIOnly: true,
             },
             files: {
               'build/application.min.js': ['build/application.js'],
@@ -212,5 +212,9 @@ module.exports = function (grunt) {
     grunt.registerTask('ci', ['clean:js', 'jshint', 'karma:ci']);
 
     grunt.registerTask('dev', ['env', 'express:dev', 'build', 'watch']);
-    grunt.registerTask('release', ['clean:js', 'env', 'copy:release', 'compress']);
+    grunt.registerTask('release', ['clean:js', 'env', 'i18n', 'copy:release', 'compress', 'azure-blob']);
+
+    grunt.registerTask('dev-notest', ['env', 'express:dev', 'build-notest', 'watch']);
+    grunt.registerTask('build-notest', ['js-notest', 'css', 'copy:dev']);
+    grunt.registerTask('js-notest', ['bower_concat', 'jshint', 'browserify:debug', 'uglify:js']);
 };

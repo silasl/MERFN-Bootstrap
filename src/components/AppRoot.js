@@ -14,10 +14,6 @@ var AppRoot = React.createClass({
         configUrl: React.PropTypes.string.isRequired
     },
 
-    contextTypes: {
-        router: React.PropTypes.func
-    },
-
     getInitialState: function () {
         return {
             loading: true,
@@ -38,7 +34,6 @@ var AppRoot = React.createClass({
 
 
     throwError: function () {
-        console.log('error');
         this.setState({
             loading: false,
             error: true
