@@ -36,4 +36,5 @@ public/css/
 public/js/
 
 # Other
+env-dev.json
 .DS_Store*

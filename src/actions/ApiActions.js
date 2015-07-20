@@ -1,37 +1,52 @@
 var Dispatcher = require('../core/Dispatcher'),
     ActionTypes = require('../constants/ActionTypes'),
-    $ = require ('jquery'),
+    $ = require('jquery'),
     ApplicationStore = require('../stores/ApplicationStore');
 
 module.exports = {
 
-    configureApp: function(configUrl) {
+    configureApp: function (configUrl) {
         ApplicationStore.setStoreState('Config', true);
 
-        this.makeAjaxCall(configUrl, function(data){
+        this.makeAjaxCall(configUrl, 'GET', function (data) {
             this.queueDispatch('GOT_CONFIG', {
                 payload: data
             });
         }.bind(this), 'CONFIG_ERROR');
     },
 
-    makeAjaxCall: function(url, success, error){
+    fetchItems: function () {
+        this.makeAjaxCall('/api/items', 'GET', function (items) {
+            this.queueDispatch('GOT_ITEMS', {
+                payload: items
+            });
+        }.bind(this), 'DB_ERROR');
+    },
+
+    insertItem: function (item) {
+        this.makeAjaxCall('/api/items', 'POST', function () {
+            this.fetchItems();
+        }.bind(this), 'DB_ERROR', JSON.stringify(item));
+    },
+
+    makeAjaxCall: function (url, type, success, error, data) {
         var self = this;
         $.ajax({
-            url : url,
+            url: url,
             contentType: 'application/json',
             dataType: 'json',
-            type: 'GET',
-            tryCount : 0,
-            retryLimit : 3,
+            type: type,
+            data: data || null,
+            tryCount: 0,
+            retryLimit: 3,
 
-            success : function(data) {
+            success: function (data) {
                 success(data);
             },
 
-            error : function() {
-                window.setTimeout(function(){
-                    this.tryCount ++;
+            error: function () {
+                window.setTimeout(function () {
+                    this.tryCount++;
                     if (this.tryCount <= this.retryLimit) {
                         $.ajax(this);
                     } else {
@@ -42,7 +57,7 @@ module.exports = {
         });
     },
 
-    queueDispatch: function(event, props){
+    queueDispatch: function (event, props) {
         var dispatchObject = {
             type: ActionTypes[event]
         };

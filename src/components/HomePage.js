@@ -13,11 +13,11 @@ var HomePage = React.createClass({
                     <h2>Home page</h2>
 
                     <p>
-                        <Link to="page2">Go to page 2</Link>
+                        <Link to="items">View items</Link>
                     </p>
 
                     <p>
-                        <Link to="page2/:paramName" params={{paramName: "param"}}>Go to page 2 with param</Link>
+                        <Link to="items/:itemId" params={{itemId: "item"}}>Go to page 2 with param</Link>
                     </p>
                 </Col>
             </Row>

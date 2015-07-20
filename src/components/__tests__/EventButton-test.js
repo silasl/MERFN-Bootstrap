@@ -12,7 +12,7 @@ describe('the Event button component', function () {
 
     beforeEach(function (done) {
         renderedComponent = TestUtils.renderIntoDocument(
-            <EventButton children={buttonText} listenFor={falseEvent} />
+            <EventButton children={buttonText} listenFor={falseEvent} onClick={dummyFunction} />
         );
 
         button = TestUtils.findRenderedDOMComponentWithTag(
@@ -22,8 +22,7 @@ describe('the Event button component', function () {
 
         renderedComponent.setState({
             loadingText: loadingText,
-            loading: false,
-            clickEvent: dummyFunction
+            loading: false
         }, done);
     });
 

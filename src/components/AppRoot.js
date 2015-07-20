@@ -4,6 +4,7 @@ var React = require('react'),
     ApiActions = require('../actions/ApiActions'),
     ApplicationStore = require('../stores/ApplicationStore'),
     ConfigStore = require('../stores/ConfigStore'),
+    ItemStore = require('../stores/ItemStore'),
     ErrorView = require('./ErrorView'),
     ReactBootstrap = require('react-bootstrap'),
     Grid = ReactBootstrap.Grid,
@@ -23,13 +24,15 @@ var AppRoot = React.createClass({
 
     componentWillMount: function () {
         ApplicationStore.onChange('CONFIG_ERROR_THROWN', this.throwError);
-        ApplicationStore.onChange('CONFIG_UPDATED', this.onConfigLoaded);
+        ApplicationStore.onChange('CONFIG_UPDATED', this.onConfigUpdated);
+        ApplicationStore.onChange('ITEMS_UPDATED', this.onItemsUpdated);
         ApiActions.configureApp(this.props.configUrl);
     },
 
     componentWillUnmount: function () {
         ApplicationStore.off('CONFIG_ERROR_THROWN', this.throwError);
-        ApplicationStore.off('CONFIG_UPDATED', this.onConfigLoaded);
+        ApplicationStore.off('CONFIG_UPDATED', this.onConfigUpdated);
+        ApplicationStore.off('ITEMS_UPDATED', this.onItemsUpdated);
     },
 
 
@@ -40,9 +43,16 @@ var AppRoot = React.createClass({
         });
     },
 
-    onConfigLoaded: function () {
+    onConfigUpdated: function () {
         this.setState({
-            title: ApplicationStore.fetchStoreProperty('Config', 'appTitle'),
+            title: ApplicationStore.fetchStoreProperty('Config', 'appTitle')
+        }, function(){
+            ApiActions.fetchItems();
+        });
+    },
+
+    onItemsUpdated: function(){
+        this.setState({
             loading: false
         });
     },

@@ -1,7 +1,7 @@
 var React = require('react'),
     AppRoot = require('./components/AppRoot'),
     HomePage = require('./components/HomePage'),
-    PageTwo = require('./components/PageTwo'),
+    Items = require('./components/Items'),
     ReactRouter = require('react-router'),
     PolyFills = require('./utils/polyfills'),
     Route = ReactRouter.Route,
@@ -22,8 +22,8 @@ MERFNApp.prototype.render = function (elementId, configUrl, rootPath) {
     var routes = (
             <Route name="app" path={rootPath} handler={AppRoot}>
                 <DefaultRoute name="home" handler={HomePage} />
-                <Route name="page2" handler={PageTwo} />
-                <Route name="page2/:paramName" handler={PageTwo} />
+                <Route name="items" handler={Items} />
+                <Route name="items/:itemId" handler={Items} />
             </Route>
         );
 

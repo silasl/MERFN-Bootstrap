@@ -3,7 +3,9 @@
 ## Development
 1. run `npm i`
 2. run `bower i`
-3. run `grunt dev`
+3. Start up a local instance of mongo
+4. Rename sample-env.json to dev-env.json and add the path to your local mongo instance
+5. run `grunt dev`
 
 ### Unit Testing
 Tests use Jasmine 2 run with Karma
