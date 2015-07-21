@@ -170,7 +170,7 @@ module.exports = function (grunt) {
                 files: [
                     'src/public/**/*.less'
                 ],
-                tasks: ['build'],
+                tasks: ['build-css'],
                 options: {
                     livereload: true
                 }
@@ -207,6 +207,7 @@ module.exports = function (grunt) {
     grunt.registerTask('js-release', ['bower_concat', 'jshint', 'karma:unit', 'browserify:release', 'uglify:js']);
 
     grunt.registerTask('build', ['js', 'css', 'copy:dev']);
+    grunt.registerTask('build-css', ['css', 'copy:dev']);
     grunt.registerTask('build-release', ['js-release', 'css', 'copy:dev']);
     grunt.registerTask('rel', ['js-release', 'css', 'copy:dev']);
     grunt.registerTask('ci', ['clean:js', 'jshint', 'karma:ci']);

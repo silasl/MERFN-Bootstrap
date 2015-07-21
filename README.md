@@ -1,5 +1,8 @@
 # MERFN-Bootstrap
 
+## Environment requirements
+Node, MongoDB, Bower
+
 ## Development
 1. run `npm i`
 2. run `bower i`

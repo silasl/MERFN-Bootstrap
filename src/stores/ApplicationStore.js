@@ -12,6 +12,10 @@ var ApplicationStore = function() {
                 this.emitChange('CONFIG_ERROR_THROWN');
                 break;
 
+            case ActionTypes.DB_ERROR:
+                this.emitChange('DB_ERROR_THROWN');
+                break;
+
             default:
             // Do nothing
         }

@@ -2,7 +2,7 @@ var ApplicationStore = require('../ApplicationStore'),
     ConfigStore = require('../ConfigStore');
 
 describe('Config Store', function () {
-    describe('getConfig', function () {
+    describe('setConfig', function () {
         var payload = {
             config: 'config'
         };

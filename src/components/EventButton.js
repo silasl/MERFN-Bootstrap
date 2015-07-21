@@ -15,14 +15,18 @@ var EventButton = React.createClass({
             clickEvent: this.props.onClick
         });
 
-        if(this.props.listenFor){
-            ApplicationStore.onChange(this.props.listenFor, this.eventFired);
+        if(this.props.listenFor.length){
+            for (var i = 0; i < this.props.listenFor.length; i++) {
+                ApplicationStore.onChange(this.props.listenFor[i], this.eventFired);
+            }
         }
     },
 
     componentWillUnmount: function () {
-        if(this.props.listenFor){
-            ApplicationStore.off(this.props.listenFor, this.eventFired);
+        if(this.props.listenFor.length){
+            for (var i = 0; i < this.props.listenFor.length; i++) {
+                ApplicationStore.off(this.props.listenFor[i], this.eventFired);
+            }
         }
     },
 
@@ -37,12 +41,13 @@ var EventButton = React.createClass({
     },
 
     render: function () {
-        var isLoading = this.state.loading;
+        var isLoading = this.state.loading,
+            disabled = this.props.disabled;
         return (
             <Button
                 data-component-path="src/components/EventButton"
                 {...this.props}
-                disabled={isLoading}
+                disabled={disabled || isLoading}
                 onClick={this.handleClick}>
                     {!isLoading ? this.props.children : this.state.loadingText}
             </Button>

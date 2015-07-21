@@ -16,6 +16,7 @@ describe('the App', function () {
 
     beforeEach(function () {
         spyOn(ApiActions, 'configureApp');
+        spyOn(ApiActions, 'fetchItems');
 
         renderedApp = TestUtils.renderIntoDocument(
             <RouteContext />
@@ -50,7 +51,7 @@ describe('the App', function () {
         });
     });
 
-    describe('when config throws an error', function() {
+    describe('when config throws an error', function () {
         beforeEach(function (done) {
             appComponent.setState({
                 error: true,
@@ -58,7 +59,7 @@ describe('the App', function () {
             }, done);
         });
 
-        it('should display an error', function() {
+        it('should display an error', function () {
             var error = TestUtils.scryRenderedComponentsWithType(
                 appComponent,
                 errorStub
@@ -67,12 +68,23 @@ describe('the App', function () {
         });
     });
 
-    describe('when app config is set', function() {
+    describe('when config is complete', function () {
         beforeEach(function (done) {
-            appComponent.setState({ loading: false }, done);
+            appComponent.onConfigUpdated();
+            appComponent.setState({title: ''}, done);
         });
 
-        it('should hide the loading spinner', function() {
+        it('should fire the fetchItems action', function() {
+            expect(ApiActions.fetchItems).toHaveBeenCalled();
+        });
+    });
+
+    describe('when items are loaded', function () {
+        beforeEach(function (done) {
+            appComponent.setState({loading: false}, done);
+        });
+
+        it('should hide the loading spinner', function () {
             var spinner = TestUtils.scryRenderedComponentsWithType(
                 appComponent,
                 spinnerStub
@@ -80,7 +92,7 @@ describe('the App', function () {
             expect(spinner.length).toBe(0);
         });
 
-        it('should load the app content', function() {
+        it('should load the app content', function () {
             var title = TestUtils.scryRenderedDOMComponentsWithTag(
                 appComponent,
                 'h1'

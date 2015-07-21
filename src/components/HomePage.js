@@ -15,10 +15,6 @@ var HomePage = React.createClass({
                     <p>
                         <Link to="items">View items</Link>
                     </p>
-
-                    <p>
-                        <Link to="items/:itemId" params={{itemId: "item"}}>Go to page 2 with param</Link>
-                    </p>
                 </Col>
             </Row>
         );
