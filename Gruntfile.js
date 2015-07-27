@@ -1,12 +1,10 @@
 var fs = require('fs'),
     pkg = require('./package'),
-    minor_version = pkg.version.replace(/\.(\d)*$/, ''),
-    major_version = pkg.version.replace(/\.(\d)*\.(\d)*$/, ''),
     path = require('path');
 
 function rename_release(v) {
     return function (d, f) {
-        var dest = path.join(d, f.replace(/(\.min)?\.js$/, '-' + v + '$1.js').replace('CBRESearch-', ''));
+        var dest = path.join(d, f.replace(/(\.min)?\.js$/, '-' + v + '$1.js').replace('MERFNBootstrap-', ''));
         return dest;
     };
 }
@@ -82,7 +80,7 @@ module.exports = function (grunt) {
             dist: {
                 files: {
                     'public/css/whitelabel.css': 'src/public/less/whitelabel/main.less',
-                    'public/css/cbre-commercial.css': 'src/public/less/themes/blank-theme/main.less'
+                    'public/css/blank-theme.css': 'src/public/less/themes/blank-theme/main.less'
                 }
             }
         },

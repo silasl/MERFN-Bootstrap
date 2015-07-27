@@ -7,7 +7,7 @@ Node, MongoDB, Bower
 1. run `npm i`
 2. run `bower i`
 3. Start up a local instance of mongo
-4. Rename sample-env.json to dev-env.json and add the path to your local mongo instance
+4. Rename env-sample.json to env-dev.json and add the path to your local mongo instance
 5. run `grunt dev`
 
 ### Unit Testing
