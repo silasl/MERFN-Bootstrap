@@ -1,9 +1,12 @@
 var React = require('react'),
+    ComponentPathMixin = require('../mixins/ComponentPathMixin')(__dirname),
     ApplicationStore = require('../stores/ApplicationStore'),
     ReactBootstrap = require('react-bootstrap'),
     Button = ReactBootstrap.Button;
 
 var EventButton = React.createClass({
+    mixins: [ComponentPathMixin],
+
     propTypes: {
         onClick: React.PropTypes.func.isRequired
     },

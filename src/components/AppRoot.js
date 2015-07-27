@@ -1,4 +1,5 @@
 var React = require('react'),
+    ComponentPathMixin = require('../mixins/ComponentPathMixin')(__dirname),
     ReactRouter = require('react-router'),
     RouteHandler = ReactRouter.RouteHandler,
     ApiActions = require('../actions/ApiActions'),
@@ -11,6 +12,8 @@ var React = require('react'),
     Spinner = require('react-spinner');
 
 var AppRoot = React.createClass({
+    mixins: [ComponentPathMixin],
+
     propTypes: {
         configUrl: React.PropTypes.string.isRequired
     },
@@ -79,7 +82,7 @@ var AppRoot = React.createClass({
 
     render: function () {
         return (
-            <Grid data-component-path="src/AppRoot">
+            <Grid>
                 <h1>{this.state.title}</h1>
                 {this.renderAppComponent()}
             </Grid>

@@ -1,4 +1,5 @@
 var React = require('react'),
+    ComponentPathMixin = require('../mixins/ComponentPathMixin')(__dirname),
     ReactRouter = require('react-router'),
     Link = ReactRouter.Link,
     ReactBootstrap = require('react-bootstrap'),
@@ -6,6 +7,8 @@ var React = require('react'),
     Col = ReactBootstrap.Col;
 
 var HomePage = React.createClass({
+    mixins: [ComponentPathMixin],
+
     render: function () {
         return (
             <Row data-component-path="src/components/HomePage">

@@ -1,4 +1,5 @@
 var React = require('react'),
+    ComponentPathMixin = require('../mixins/ComponentPathMixin')(__dirname),
     ApiActions = require('../actions/ApiActions'),
     EventButton = require('./EventButton'),
     ReactRouter = require('react-router'),
@@ -12,6 +13,8 @@ var React = require('react'),
     Col = ReactBootstrap.Col;
 
 var Items = React.createClass({
+    mixins: [ComponentPathMixin],
+
     getInitialState: function () {
         return {
             items: ApplicationStore.fetchStore('Items'),
