@@ -26,7 +26,7 @@ module.exports = function (config) {
     browserify: {
       debug: true,
 
-      transform: [['reactify', {'es6': true}], 'brfs', 'rewireify'],
+      transform: [['reactify', {'es6': true}], 'brfs', 'rewireify', 'browserify-shim'],
 
       // don't forget to register the extensions
       extensions: ['.js', '.jsx', '.coffee']

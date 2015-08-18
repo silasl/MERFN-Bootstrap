@@ -73,10 +73,11 @@
   "scripts": {
     "test": "karma start karma.watch.js"
   },
+  "browserify": {
+    "transform": ["browserify-shim"]
+  },
   "browserify-shim": {
     "jquery": "global:jQuery",
-    "auth0-lock": "global:Auth0Lock",
-    "amido-profile-service": "global:AmidoProfileService",
     "react": "global:React",
     "react-router": "global:ReactRouter",
     "react-bootstrap": "global:ReactBootstrap",

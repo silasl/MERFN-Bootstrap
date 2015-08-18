@@ -17,10 +17,14 @@ module.exports = function (grunt) {
                 cssDest: 'src/public/less/whitelabel/base/vendor.less',
                 dependencies: {
                     'react-bootstrap': 'react',
-                    'react-spinner': 'react'
+                    'react-spinner': 'react',
+                    'react-router': 'react',
+                    'datetimepicker': 'jquery',
+                    'jQuery.XDomainRequest': 'jquery'
                 },
                 mainFiles: {
-                    'react': 'react-with-addons.min.js',
+                    'react': 'react-with-addons.js',
+                    'react-router': 'build/lib/index.js',
                     'react-spinner': ['index.js', 'react-spinner.css']
                 }
             }
