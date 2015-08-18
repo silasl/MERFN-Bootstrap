@@ -10,8 +10,7 @@ var React = require('react'),
     ListGroup = ReactBootstrap.ListGroup,
     ListGroupItem = ReactBootstrap.ListGroupItem,
     Row = ReactBootstrap.Row,
-    Col = ReactBootstrap.Col,
-    $ = require('jquery');
+    Col = ReactBootstrap.Col;
 
 var Items = React.createClass({
     mixins: [ComponentPathMixin],
@@ -30,12 +29,6 @@ var Items = React.createClass({
 
     componentWillUnmount: function () {
         ApplicationStore.off('ITEMS_UPDATED', this.onItemsUpdated);
-    },
-
-    componentDidMount: function() {
-        var dateObj = React.findDOMNode(this.refs.date);
-
-        $(dateObj).datetimepicker();
     },
 
     onItemsUpdated: function () {
@@ -106,11 +99,6 @@ var Items = React.createClass({
                            placeholder="item name"
                            value={this.state.itemName}
                            onChange={this.handleInputChange}/>
-
-                    <Input type="text"
-                           label="Pick a date"
-                           name="date"
-                           ref="date" />
 
                     <EventButton
                         bsSize='large'

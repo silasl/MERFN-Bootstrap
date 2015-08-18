@@ -19,12 +19,10 @@ module.exports = function (grunt) {
                     'react-bootstrap': 'react',
                     'react-spinner': 'react',
                     'react-router': 'react',
-                    'datetimepicker': 'jquery',
                     'jQuery.XDomainRequest': 'jquery'
                 },
                 mainFiles: {
                     'react': 'react-with-addons.js',
-                    'react-router': 'build/lib/index.js',
                     'react-spinner': ['index.js', 'react-spinner.css']
                 }
             }
@@ -215,7 +213,7 @@ module.exports = function (grunt) {
     grunt.registerTask('ci', ['clean:js', 'jshint', 'karma:ci']);
 
     grunt.registerTask('dev', ['env', 'express:dev', 'build', 'watch']);
-    grunt.registerTask('release', ['clean:js', 'env', 'i18n', 'copy:release', 'compress', 'azure-blob']);
+    grunt.registerTask('release', ['clean:js', 'env', 'copy:release', 'compress', 'azure-blob']);
 
     grunt.registerTask('dev-notest', ['env', 'express:dev', 'build-notest', 'watch']);
     grunt.registerTask('build-notest', ['js-notest', 'css', 'copy:dev']);

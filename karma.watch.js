@@ -11,6 +11,7 @@ module.exports = function (config) {
     // list of files / patterns to load in the browser
     files: [
       'karma/bind-polyfill-for-phantom.js',
+        'public/js/vendor/vendor.js',
       'src/**/__tests__/*.js'
     ],
 

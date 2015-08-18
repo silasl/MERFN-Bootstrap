@@ -20,7 +20,6 @@
     "tests"
   ],
   "dependencies": {
-    "datetimepicker": "~2.4.5",
     "jquery": "~2.1.4",
     "jQuery.XDomainRequest": "~1.0.4",
     "react": "~0.13.3",
