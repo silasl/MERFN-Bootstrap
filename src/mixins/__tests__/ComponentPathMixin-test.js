@@ -29,19 +29,8 @@ describe('ComponentPathMixin', function () {
 
         describe('When a context is provided', function() {
             beforeEach(function () {
-                ComponentPathMixin = require('../ComponentPathMixin')('/../test/path', 'context');
-
-                TestComponent = React.createClass({
-                    mixins: [ComponentPathMixin],
-                    render: function () {
-                        return (
-                            <div />
-                        );
-                    }
-                });
-
                 renderedComponent = TestUtils.renderIntoDocument(
-                    <TestComponent />
+                    <TestComponent componentContext="context" />
                 );
 
                 element = React.findDOMNode(renderedComponent);
