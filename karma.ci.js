@@ -11,6 +11,7 @@ module.exports = function (config) {
     // list of files / patterns to load in the browser
     files: [
       'karma/bind-polyfill-for-phantom.js',
+      'public/js/vendor/vendor.js',
       'src/**/__tests__/*.js'
     ],
 
@@ -26,7 +27,7 @@ module.exports = function (config) {
     browserify: {
       debug: true,
 
-      transform: [['reactify', {'es6': true}], 'brfs', 'rewireify'],
+      transform: [['reactify', {'es6': true}], 'brfs', 'rewireify', 'browserify-shim'],
 
       // don't forget to register the extensions
       extensions: ['.js', '.jsx', '.coffee']
